@@ -17,10 +17,14 @@ jobs:
         uses: actions/setup-java@v2
         with:
           distribution: 'zulu'  # Usa Zulu como distribución de Java
-          java-version: '17'    # Actualizado a Java 17 para compatibilidad
+          java-version: '17'    # Asegurando la compatibilidad con Android SDK
 
       - name: 📥 Instalar Android SDK y dependencias
         uses: android-actions/setup-android@v2
+        with:
+          # Eliminar los parámetros incorrectos
+          api-level: 33    # Versión recomendada
+          build-tools-version: 33.0.0  # Especificar las herramientas de build necesarias
 
       - name: 🔄 Sincronizar Capacitor y Dependencias
         run: |
@@ -30,10 +34,10 @@ jobs:
       - name: 🏗️ Construir APK
         run: |
           cd android
-          ./gradlew assembleDebug
+          ./gradlew assembleDebug --stacktrace  # Agregar stacktrace para más detalles en caso de error
 
       - name: Subir el APK como Artefacto
-        uses: actions/upload-artifact@v4  # Actualizado a la versión más reciente
+        uses: actions/upload-artifact@v4  # Asegurando que se usa la última versión
         with:
           name: app-release-apk
           path: android/app/build/outputs/apk/debug/app-debug.apk
