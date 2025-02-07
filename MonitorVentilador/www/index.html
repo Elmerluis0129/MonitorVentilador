@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monitor de Ventilador</title>
+  <link id="theme-style" rel="stylesheet" href="styles-light.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Monitor de Ventilador</h1>
+    <div class="controls">
+      <button id="theme-toggle">Cambiar a Tema Oscuro</button>
+      <button id="download-csv">Descargar CSV</button>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Hora de Encendido</th>
+          <th>Hora de Apagado</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody id="fan-log">
+        <!-- Las filas dinámicas aparecerán aquí -->
+      </tbody>
+    </table>
+    <button id="clear-data">Borrar Datos</button>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

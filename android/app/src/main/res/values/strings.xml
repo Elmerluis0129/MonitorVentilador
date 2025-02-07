@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">MonitorVentilador</string>
+    <string name="title_activity_main">MonitorVentilador</string>
+    <string name="package_name">com.example.monitorventilador</string>
+    <string name="custom_url_scheme">com.example.monitorventilador</string>
+</resources>

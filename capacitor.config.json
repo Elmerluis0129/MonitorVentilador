@@ -1,0 +1,6 @@
+{
+  "appId": "com.example.primerparcial",
+  "appName": "PrimerParcial",
+  "webDir": "MonitorVentilador/www",
+  "bundledWebRuntime": false
+}
