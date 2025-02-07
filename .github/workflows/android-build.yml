@@ -1,0 +1,42 @@
+name: Android Build APK
+
+on:
+  push:
+    branches:
+      - main  # Se ejecutará cada vez que hagas un push en la rama principal
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Se ejecutará en un entorno Ubuntu en la nube
+
+    steps:
+      - name: 📥 Clonar el repositorio
+        uses: actions/checkout@v3
+
+      - name: 🔧 Configurar JDK
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'zulu'  # Usa Zulu como distribución de Java
+          java-version: '11'    # Versión compatible con Android SDK
+
+      - name: 📥 Instalar Android SDK y dependencias
+        uses: android-actions/setup-android@v2
+        with:
+          api-level: 33  # Puedes cambiar el nivel de API si lo necesitas
+          build-tools-version: 33.0.0
+
+      - name: 🔄 Sincronizar Capacitor y Dependencias
+        run: |
+          npm install
+          npx cap sync android
+
+      - name: 🏗️ Construir APK
+        run: |
+          cd android
+          ./gradlew assembleDebug
+
+      - name: 📤 Subir el APK como Artefacto
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-release.apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
