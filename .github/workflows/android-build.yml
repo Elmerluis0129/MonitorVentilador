@@ -22,6 +22,11 @@ jobs:
       - name: 📥 Instalar Android SDK y dependencias
         uses: android-actions/setup-android@v2
 
+      - name: 🧑‍💻 Verificar Java y Gradle
+        run: |
+          java -version  # Verifica la versión de Java
+          gradle -v     # Verifica la instalación de Gradle
+
       - name: 🔄 Sincronizar Capacitor y Dependencias
         run: |
           npm install
