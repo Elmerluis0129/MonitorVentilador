@@ -21,9 +21,6 @@ jobs:
 
       - name: 📥 Instalar Android SDK y dependencias
         uses: android-actions/setup-android@v2
-        with:
-          api-level: 33
-          build-tools-version: 33.0.0
 
       - name: 🔄 Sincronizar Capacitor y Dependencias
         run: |
